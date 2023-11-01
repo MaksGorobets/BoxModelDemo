@@ -11,6 +11,10 @@
 		E95E867A2AEBDE7500A3161B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E86792AEBDE7500A3161B /* ContentView.swift */; };
 		E95E867C2AEBDE7700A3161B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E95E867B2AEBDE7700A3161B /* Assets.xcassets */; };
 		E95E867F2AEBDE7700A3161B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E95E867E2AEBDE7700A3161B /* Preview Assets.xcassets */; };
+		E95E86882AEBE4B500A3161B /* BoxesImageClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E95E86872AEBE4B500A3161B /* BoxesImageClassifier.mlmodel */; };
+		E9FD5EBC2AF2C71E00EF0F56 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5EBB2AF2C71E00EF0F56 /* ImagePicker.swift */; };
+		E9FD5EBE2AF2CE9E00EF0F56 /* Classifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5EBD2AF2CE9E00EF0F56 /* Classifier.swift */; };
+		E9FD5EC02AF2E30C00EF0F56 /* ImageClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FD5EBF2AF2E30C00EF0F56 /* ImageClassifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +23,10 @@
 		E95E86792AEBDE7500A3161B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E95E867B2AEBDE7700A3161B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E95E867E2AEBDE7700A3161B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E95E86872AEBE4B500A3161B /* BoxesImageClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BoxesImageClassifier.mlmodel; sourceTree = "<group>"; };
+		E9FD5EBB2AF2C71E00EF0F56 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		E9FD5EBD2AF2CE9E00EF0F56 /* Classifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classifier.swift; sourceTree = "<group>"; };
+		E9FD5EBF2AF2E30C00EF0F56 /* ImageClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +59,12 @@
 		E95E86762AEBDE7500A3161B /* BoxModelDemo */ = {
 			isa = PBXGroup;
 			children = (
+				E95E86872AEBE4B500A3161B /* BoxesImageClassifier.mlmodel */,
 				E95E86772AEBDE7500A3161B /* BoxModelDemoApp.swift */,
+				E9FD5EBD2AF2CE9E00EF0F56 /* Classifier.swift */,
+				E9FD5EBB2AF2C71E00EF0F56 /* ImagePicker.swift */,
 				E95E86792AEBDE7500A3161B /* ContentView.swift */,
+				E9FD5EBF2AF2E30C00EF0F56 /* ImageClassifier.swift */,
 				E95E867B2AEBDE7700A3161B /* Assets.xcassets */,
 				E95E867D2AEBDE7700A3161B /* Preview Content */,
 			);
@@ -137,7 +149,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FD5EBE2AF2CE9E00EF0F56 /* Classifier.swift in Sources */,
+				E95E86882AEBE4B500A3161B /* BoxesImageClassifier.mlmodel in Sources */,
+				E9FD5EBC2AF2C71E00EF0F56 /* ImagePicker.swift in Sources */,
 				E95E867A2AEBDE7500A3161B /* ContentView.swift in Sources */,
+				E9FD5EC02AF2E30C00EF0F56 /* ImageClassifier.swift in Sources */,
 				E95E86782AEBDE7500A3161B /* BoxModelDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +288,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BoxModelDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = XUYF93872P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -300,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BoxModelDemo/Preview Content\"";
+				DEVELOPMENT_TEAM = XUYF93872P;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

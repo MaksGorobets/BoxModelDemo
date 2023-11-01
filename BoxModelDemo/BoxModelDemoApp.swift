@@ -11,7 +11,7 @@ import SwiftUI
 struct BoxModelDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(classifier: ImageClassifier())
         }
     }
 }
