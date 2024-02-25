@@ -14,10 +14,10 @@ class ImageClassifier: ObservableObject {
     var imageClass: String? {
         classifier.results
     }
-        
+    
     // MARK: Intent(s)
     func detect(uiImage: UIImage) {
-        guard let ciImage = CIImage (image: uiImage) else {
+        guard let ciImage = CIImage(image: uiImage) else {
             print("Failed to convert UIImage to CIImage")
             return
         }
@@ -25,5 +25,5 @@ class ImageClassifier: ObservableObject {
         classifier.detect(ciImage: ciImage)
         
     }
-        
+    
 }

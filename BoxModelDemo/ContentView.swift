@@ -33,22 +33,22 @@ struct ContentView: View {
                 isPresenting = true
             }
             Group {
-                               if let imageClass = classifier.imageClass {
-                                   HStack{
-                                       Text("Image categories:")
-                                           .font(.caption)
-                                       Text(imageClass)
-                                           .bold()
-                                   }
-                               } else {
-                                   HStack{
-                                       Text("Image categories: NA")
-                                           .font(.caption)
-                                   }
-                               }
-                           }
-                           .font(.subheadline)
-                           .padding()
+                if let imageClass = classifier.imageClass {
+                    HStack{
+                        Text("Image categories:")
+                            .font(.caption)
+                        Text(imageClass)
+                            .bold()
+                    }
+                } else {
+                    HStack{
+                        Text("Image categories: NA")
+                            .font(.caption)
+                    }
+                }
+            }
+            .font(.subheadline)
+            .padding()
         }
         .sheet(isPresented: $isPresenting) {
             ImagePicker(uiImage: $uiImage, isPresenting: $isPresenting)

@@ -26,23 +26,17 @@ struct Classifier {
         
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         
-#if targetEnvironment(simulator)
-
-    request.usesCPUOnly = true
-
-    #endif
-        
         do {
-                    try handler.perform([request])
-                    if let results = request.results as? [VNClassificationObservation], let firstResult = results.first {
-                        self.results = firstResult.identifier
-                        print("Image classified as: \(firstResult.identifier)")
-                    } else {
-                        print("No classification results found")
-                    }
-                } catch {
-                    print("Error in classification request: \(error)")
-                }
+            try handler.perform([request])
+            if let results = request.results as? [VNClassificationObservation], let firstResult = results.first {
+                self.results = firstResult.identifier
+                print("Image classified as: \(firstResult.identifier)")
+            } else {
+                print("No classification results found")
+            }
+        } catch {
+            print("Error in classification request: \(error)")
+        }
         
     }
     
