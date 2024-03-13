@@ -17,51 +17,59 @@ struct ContentView: View {
     @ObservedObject var classifier: ImageClassifier
     
     var body: some View {
-        VStack {
-            Spacer()
-            Text("Pick an image")
-                .overlay {
-                    if uiImage != nil {
-                        Image(uiImage: uiImage!)
-                            .resizable()
-                            .frame(width: 300, height: 300)
-                    }
-                }
-            
-            Spacer()
-            Button("Show sheet") {
-                isPresenting = true
-            }
-            Group {
-                if let imageClass = classifier.imageClass {
-                    HStack{
-                        Text("Image categories:")
-                            .font(.caption)
-                        Text(imageClass)
-                            .bold()
-                    }
+        GeometryReader { proxy in
+            VStack {
+                Spacer()
+                if uiImage != nil {
+                    Image(uiImage: uiImage!)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: proxy.size.width * 0.8)
                 } else {
-                    HStack{
-                        Text("Image categories: NA")
-                            .font(.caption)
+                    Text("Pick an image")
+                }
+                Spacer()
+                Toggle("Use new model?", isOn: $classifier.useNewModel)
+                    .onChange(of: classifier.useNewModel) {
+                        if uiImage != nil {
+                            classifier.detect(uiImage: uiImage!)
+                        }
                     }
+                HStack {
+                    Image(systemName: "wand.and.stars.inverse")
+                    Text("Suggested")
+                }
+                .font(.subheadline)
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(classifier.otherResults, id: \.self) { result in
+                            Text(result)
+                                .padding(10)
+                                .background(
+                                    Capsule()
+                                        .fill(LinearGradient(colors: [.blue, .red], startPoint: .leading, endPoint: .trailing))
+                                )
+                        }
+                    }
+                    .padding()
+                }
+                Button("Show sheet") {
+                    isPresenting = true
                 }
             }
-            .font(.subheadline)
+            .sheet(isPresented: $isPresenting) {
+                ImagePicker(uiImage: $uiImage, isPresenting: $isPresenting)
+                    .onDisappear{
+                        print("Image picked, initiating classification process")
+                        if uiImage != nil {
+                            classifier.detect(uiImage: uiImage!)
+                        } else {
+                            print("No image selected")
+                        }
+                    }
+            }
             .padding()
         }
-        .sheet(isPresented: $isPresenting) {
-            ImagePicker(uiImage: $uiImage, isPresenting: $isPresenting)
-                .onDisappear{
-                    print("Image picked, initiating classification process")
-                    if uiImage != nil {
-                        classifier.detect(uiImage: uiImage!)
-                    } else {
-                        print("No image selected")
-                    }
-                }
-        }
-        .padding()
     }
 }
 

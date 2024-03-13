@@ -11,8 +11,16 @@ class ImageClassifier: ObservableObject {
     
     @Published private var classifier = Classifier()
     
+    var useNewModel = true { didSet {
+        classifier.modelSwitch = useNewModel
+    }}
+    
     var imageClass: String? {
         classifier.results
+    }
+    var otherResults: [String] {
+        print("Called with count of: \(classifier.validResultsArray)")
+        return classifier.validResultsArray
     }
     
     // MARK: Intent(s)
