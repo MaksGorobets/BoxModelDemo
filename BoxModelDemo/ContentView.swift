@@ -44,6 +44,7 @@ struct ContentView: View {
                     HStack {
                         ForEach(classifier.otherResults, id: \.self) { result in
                             Text(result)
+                                .foregroundStyle(.white)
                                 .padding(10)
                                 .background(
                                     Capsule()

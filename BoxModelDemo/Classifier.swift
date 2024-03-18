@@ -4,6 +4,8 @@
 //
 //  Created by Maks Winters on 01.11.2023.
 //
+// https://stackoverflow.com/questions/75863781/code-9-could-not-create-inference-context-coreml-ios
+//
 
 import CoreML
 import Vision
@@ -14,10 +16,11 @@ struct Classifier {
     let minimumConfidence: VNConfidence = 0.1
     var getModel: VNCoreMLModel? {
         get {
+            let config = MLModelConfiguration()
             if modelSwitch {
-                return try? VNCoreMLModel(for: StorifyQRImageClassifierV1(configuration: MLModelConfiguration()).model)
+                return try? VNCoreMLModel(for: StorifyQRImageClassifierV1(configuration: config).model)
             } else {
-                return try? VNCoreMLModel(for: BoxesImageClassifier(configuration: MLModelConfiguration()).model)
+                return try? VNCoreMLModel(for: BoxesImageClassifier(configuration: config).model)
             }
         }
     }
@@ -37,6 +40,17 @@ struct Classifier {
         }
         
         let request = VNCoreMLRequest(model: model)
+        
+        #if targetEnvironment(simulator)
+        let allDevices = MLComputeDevice.allComputeDevices
+
+        for device in allDevices {
+          if(device.description.contains("MLCPUComputeDevice")){
+            request.setComputeDevice(.some(device), for: .main)
+            break
+          }
+        }
+        #endif
         
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         
