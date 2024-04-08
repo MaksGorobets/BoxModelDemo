@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E94B55B32BC3890B00841D35 /* StorifyQRImageClassifierV2.1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E94B55B22BC3890B00841D35 /* StorifyQRImageClassifierV2.1.mlmodel */; };
 		E959C9692BA1EE05009E1D05 /* StorifyQRImageClassifierV1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = E959C9682BA1EE05009E1D05 /* StorifyQRImageClassifierV1.mlmodel */; };
 		E95E86782AEBDE7500A3161B /* BoxModelDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E86772AEBDE7500A3161B /* BoxModelDemoApp.swift */; };
 		E95E867A2AEBDE7500A3161B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E95E86792AEBDE7500A3161B /* ContentView.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E94B55B22BC3890B00841D35 /* StorifyQRImageClassifierV2.1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StorifyQRImageClassifierV2.1.mlmodel; sourceTree = "<group>"; };
 		E959C9682BA1EE05009E1D05 /* StorifyQRImageClassifierV1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = StorifyQRImageClassifierV1.mlmodel; sourceTree = "<group>"; };
 		E95E86742AEBDE7500A3161B /* BoxModelDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BoxModelDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E95E86772AEBDE7500A3161B /* BoxModelDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxModelDemoApp.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			children = (
 				E95E86872AEBE4B500A3161B /* BoxesImageClassifier.mlmodel */,
 				E959C9682BA1EE05009E1D05 /* StorifyQRImageClassifierV1.mlmodel */,
+				E94B55B22BC3890B00841D35 /* StorifyQRImageClassifierV2.1.mlmodel */,
 				E95E86772AEBDE7500A3161B /* BoxModelDemoApp.swift */,
 				E9FD5EBD2AF2CE9E00EF0F56 /* Classifier.swift */,
 				E9FD5EBB2AF2C71E00EF0F56 /* ImagePicker.swift */,
@@ -153,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9FD5EBE2AF2CE9E00EF0F56 /* Classifier.swift in Sources */,
+				E94B55B32BC3890B00841D35 /* StorifyQRImageClassifierV2.1.mlmodel in Sources */,
 				E959C9692BA1EE05009E1D05 /* StorifyQRImageClassifierV1.mlmodel in Sources */,
 				E95E86882AEBE4B500A3161B /* BoxesImageClassifier.mlmodel in Sources */,
 				E9FD5EBC2AF2C71E00EF0F56 /* ImagePicker.swift in Sources */,

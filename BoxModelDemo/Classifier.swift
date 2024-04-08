@@ -17,8 +17,9 @@ struct Classifier {
     var getModel: VNCoreMLModel? {
         get {
             let config = MLModelConfiguration()
+            config.computeUnits = .cpuOnly
             if modelSwitch {
-                return try? VNCoreMLModel(for: StorifyQRImageClassifierV1(configuration: config).model)
+                return try? VNCoreMLModel(for: StorifyQRImageClassifierV2_1(configuration: config).model)
             } else {
                 return try? VNCoreMLModel(for: BoxesImageClassifier(configuration: config).model)
             }
@@ -41,20 +42,23 @@ struct Classifier {
         
         let request = VNCoreMLRequest(model: model)
         
-        #if targetEnvironment(simulator)
-        let allDevices = MLComputeDevice.allComputeDevices
-
-        for device in allDevices {
-          if(device.description.contains("MLCPUComputeDevice")){
-            request.setComputeDevice(.some(device), for: .main)
-            break
-          }
-        }
-        #endif
+//        #if targetEnvironment(simulator)
+//        let allDevices = MLComputeDevice.allComputeDevices
+//
+//        for device in allDevices {
+//          if(device.description.contains("MLCPUComputeDevice")){
+//            request.setComputeDevice(.some(device), for: .main)
+//            break
+//          }
+//        }
+//        #endif
         
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         
         do {
+            #if targetEnvironment(simulator)
+            request.usesCPUOnly = true
+            #endif
             try handler.perform([request])
             if let results = request.results as? [VNClassificationObservation], let firstResult = results.first {
                 self.results = firstResult.identifier
