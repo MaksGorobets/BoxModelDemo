@@ -14,17 +14,14 @@ import CoreImage
 struct Classifier {
     var modelSwitch: Bool = true
     let minimumConfidence: VNConfidence = 0.1
-    var getModel: VNCoreMLModel? {
-        get {
-            let config = MLModelConfiguration()
-            config.computeUnits = .cpuOnly
-            if modelSwitch {
-                return try? VNCoreMLModel(for: StorifyQRImageClassifierV2_1(configuration: config).model)
-            } else {
-                return try? VNCoreMLModel(for: BoxesImageClassifier(configuration: config).model)
-            }
+    lazy var getModel: VNCoreMLModel? = {
+        let config = MLModelConfiguration()
+        if modelSwitch {
+            return try? VNCoreMLModel(for: StorifyQRImageClassifierV2_1(configuration: config).model)
+        } else {
+            return try? VNCoreMLModel(for: BoxesImageClassifier(configuration: config).model)
         }
-    }
+    }()
     
     
     private(set) var results: String?
@@ -42,16 +39,16 @@ struct Classifier {
         
         let request = VNCoreMLRequest(model: model)
         
-//        #if targetEnvironment(simulator)
-//        let allDevices = MLComputeDevice.allComputeDevices
-//
-//        for device in allDevices {
-//          if(device.description.contains("MLCPUComputeDevice")){
-//            request.setComputeDevice(.some(device), for: .main)
-//            break
-//          }
-//        }
-//        #endif
+        //        #if targetEnvironment(simulator)
+        //        let allDevices = MLComputeDevice.allComputeDevices
+        //
+        //        for device in allDevices {
+        //          if(device.description.contains("MLCPUComputeDevice")){
+        //            request.setComputeDevice(.some(device), for: .main)
+        //            break
+        //          }
+        //        }
+        //        #endif
         
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
         
